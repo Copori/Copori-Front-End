@@ -7,6 +7,7 @@
 .profile__body--img {
   position: relative;
   margin: 20px auto 0 20px;
+  font-size: 1rem;
   padding: auto;
   width: 150px;
   height: 150px;
@@ -21,9 +22,8 @@
   float: right;
   top: 10px;
 }
-.profile__body--input-name,
-.profile__body--input-email,
-.profile__body--input-pw {
+.profile__body--input-id,
+.profile__body--input-email {
   width: 85%;
   padding: 10px;
   background-color: rgb(252, 206, 116);
@@ -36,15 +36,12 @@
   border: none;
   border-bottom: 2px solid rgb(131, 74, 0);
 }
-.profile__body--input-name {
-}
-.profile__body--input-email {
-}
-.profile__body--input-pw {
-}
-.profile__body--input-name::placeholder,
-.profile__body--input-email::placeholder,
-.profile__body--input-pw::placeholder {
+.profile__body--input-id::placeholder,
+.profile__body--input-email::placeholder {
   color: rgb(165, 121, 0);
   font-weight: 700;
+}
+.profile__body--input-id:disabled::placeholder,
+.profile__body--input-email:disabled::placeholder {
+  color: rgb(150, 150, 150);
 }
