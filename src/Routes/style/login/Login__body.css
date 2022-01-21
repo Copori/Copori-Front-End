@@ -1,0 +1,43 @@
+.login__body {
+  position: relative;
+}
+.login__body--id,
+.login__body--pw {
+  position: relative;
+  text-align: center;
+}
+.login__body--id-icon,
+.login__body--pw-icon {
+}
+
+.login__body--id-input {
+  width: 90%;
+  margin-top: 100px;
+  margin-bottom: 12px;
+  padding: 15px;
+  background-color: #f2dc01;
+  border: none;
+  border-bottom: 2px solid rgb(131, 74, 0);
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.login__body--pw-input {
+  width: 90%;
+  padding: 15px;
+  background-color: #f2dc01;
+  border: none;
+  border-bottom: 2px solid rgb(131, 74, 0);
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.login__body--id-input:focus,
+.login__body--pw-input:focus {
+}
+.login__body--id-input::placeholder,
+.login__body--pw-input::placeholder {
+  color: rgb(131, 74, 0);
+  font-weight: 700;
+}

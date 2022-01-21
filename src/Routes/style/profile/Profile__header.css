@@ -1,0 +1,12 @@
+.profile__header {
+  position: relative;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  font-size: 3.5rem;
+  font-family: pacifico;
+  text-shadow: 2px 2px 2px rgb(226, 174, 48);
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  border-bottom: 2px solid rgb(131, 74, 0);
+}

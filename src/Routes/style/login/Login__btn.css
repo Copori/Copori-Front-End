@@ -1,0 +1,41 @@
+.login__btn {
+  position: relative;
+  margin-top: 30px;
+}
+.login__btn--signin {
+  position: relative;
+  color: aliceblue;
+  margin-left: 5%;
+  width: 90%;
+  height: 40px;
+  font-family: jua;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: rgb(153, 83, 36);
+  box-shadow: 2px 2px 2px rgb(104, 43, 43);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.login__btn--signup {
+  position: relative;
+  color: aliceblue;
+  margin-left: 5%;
+  margin-top: 10px;
+  width: 90%;
+  height: 40px;
+  font-family: jua;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: rgb(153, 83, 36);
+  box-shadow: 2px 2px 2px rgb(104, 43, 43);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.login__btn--signin:hover,
+.login__btn--signup:hover {
+  background-color: rgb(177, 108, 43);
+}
+.login__btn--signin:active,
+.login__btn--signup:active {
+  box-shadow: none;
+}

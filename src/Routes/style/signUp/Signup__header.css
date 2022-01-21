@@ -1,0 +1,17 @@
+.signup__header {
+  position: relative;
+}
+.signup__header--logo {
+  position: relative;
+  font-family: pacifico;
+  font-size: 3rem;
+  text-shadow: 2px 2px 2px rgb(226, 174, 48);
+  top: 30px;
+  padding-bottom: 15px;
+  padding-left: 55px;
+  padding-right: 55px;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  border-bottom: 3px solid #834a00;
+}

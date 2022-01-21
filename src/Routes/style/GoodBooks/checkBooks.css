@@ -1,0 +1,66 @@
+.GoodBooks__CheckBook {
+    width: 800px;
+    height: 400px;
+    background-color: antiquewhite;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.GoodBooks__CheckBook--cancel {
+    position: absolute;
+    box-sizing: border-box;
+    right: 15px;
+    top: 15px;
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.363);
+    cursor: pointer;
+}
+
+.CheckBook--img {
+    width: 240px;
+    height: 300px;
+    background-color: darksalmon;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.CheckBook--img > img {
+    width: 200px;
+    height: 240px;
+}
+
+.GoodBooks__CheckBooks__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin-left: 20px;
+    height: 300px;
+}
+
+.GoodBooks__CheckBooks__text > span {
+    font-family: Jua;
+}
+
+.GoodBooks__CheckBooks__text--title {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.GoodBooks__CheckBooks__text--author {
+    font-size: 20px;
+}
+
+.GoodBooks__CheckBooks__text--publishDate {
+    font-size: 18px;
+}
+
+.GoodBooks__CheckBooks__text--recommender {
+    font-size: 20px;
+}

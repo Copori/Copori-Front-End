@@ -1,0 +1,154 @@
+.BookDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.BookDetail__Containter {
+  margin-top: 20px;
+  width: 650px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BookDetail__Container--title {
+  
+  font-size: 80px;
+  color: rgba(34, 19, 0, 0.87);
+  text-shadow: 3px 2px 4px rgb(241, 185, 0);
+  font-family: Pacifico;
+}
+.BookDetail__Container__box {
+  width: 100%;
+  height: 300px;
+  display: flex;
+}
+
+.BookDetail__Container__box--img {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BookDetail__Container__box--img > div {
+  width: 190px;
+  height: 233px;
+  border: 4px solid burlywood;
+  box-shadow: 2px 2px 5px rgb(66, 66, 66);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BookDetail__Container__box--img > div > img{
+  width: 190px;
+  height: 230px;
+}
+
+.BookDetail__Container__box__text {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+
+.BookDetail__Container__box__text > div {
+  width: 340px;
+  height: 235px;
+  background-color: burlywood;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.BookDetail__Container__box__text > div > span {
+  margin-left: 20px;
+  color: rgb(70, 39, 0);
+  font-weight: bold;
+  font-family: Jua;
+}
+
+.BookDetail__Container__box__text--title{
+  font-size: 28px;
+  text-align: center;
+}
+
+.BookDetail__Container__box__text--rights {
+  font-size: 18px;
+}
+
+.BookDetail__Container__box__text--subDescription {
+  font-size: 18px;
+}
+
+.BookDetail__Container__box__text--issuedDate {
+  font-size: 16px;
+}
+
+.BookDetail__Container__subTitle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.BookDetail__Container__subTitle--title {
+  display: flex;
+  margin: 10px;
+  font-size: 38px;
+  font-family: Pacifico;
+  color: rgb(85, 48, 0);
+  text-shadow: 2px 1px 1px rgb(175, 99, 1);
+  padding-bottom: 12px;
+}
+
+.BookDetail__Container__subTitle--star {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 84, 65);
+  margin-bottom: 20px;
+}
+
+.BookDetail__Container__subTitle--heart {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:crimson;
+  margin-left: 120px;
+  margin-bottom: 20px;
+}
+
+.BookDetail__Container__subTitle--number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  font-family: Jua;
+  padding-top: 10px;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.BookDetail__Container__subContents {
+  width: 580px;
+  border-radius: 10px;
+}
+
+.BookDetail__Container__subContents > p {
+  font-size: 20px;
+  font-family: Jua;
+  line-height: 30px;
+}

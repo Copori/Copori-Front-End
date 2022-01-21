@@ -1,0 +1,49 @@
+.profile__info {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-top: 40px;
+}
+.profile__info--textarea {
+  position: relative;
+  width: 95%;
+  float: right;
+  left: 20px;
+}
+.profile__info--textarea-info {
+  width: 100%;
+  height: 300px;
+  min-height: 30px;
+  background-color: rgb(252, 206, 116);
+  outline: none;
+  box-sizing: border-box;
+  font-size: 15px;
+  resize: none;
+  overflow: auto;
+  border: none;
+  border: 2px solid rgb(131, 74, 0);
+}
+.profile__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile__btn--save {
+  position: relative;
+  color: aliceblue;
+  font-family: jua;
+  margin: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: rgb(153, 83, 36);
+  box-shadow: 2px 2px 2px rgb(104, 43, 43);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.profile__btn--save:hover {
+  background-color: rgb(177, 108, 43);
+}
+.profile__btn--save:active {
+  box-shadow: none;
+}

@@ -1,0 +1,71 @@
+.GoodBooks {
+  width: 1040px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.GoodBooks__title {
+  width: 1060px;
+  height: 50px;
+  position: fixed;
+  display: flex;
+  z-index: 10;
+  margin-top: 220px;
+  background-color: rgb(252, 206, 116);
+  border-bottom: 3px solid rgb(70, 39, 0);
+}
+
+.GoodBooks__title--left {
+  font-family: Gugi;
+  width: 510px;
+  height: 50px;
+  display: flex;
+}
+
+.GoodBooks__title--right {
+  width: 510px;
+  height: 50px;
+}
+
+.GoodBooks__title--icon {
+  font-size: 35px;
+  margin-left: 20px;
+  margin-top: 5px;
+  color: rgb(58, 33, 0);
+  cursor: pointer;
+}
+
+.GoodBooks__title--left > span {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: rgb(104, 59, 0);
+  cursor: pointer;
+}
+
+.GoodBooks__title--left > span:hover {
+  color: white;
+}
+
+
+.GoodBooks__title--right {
+  display: flex;
+  justify-content: flex-end;
+}
+.GoodBooks__title__MoreBtn {
+  display: flex;
+  align-items: end;
+  margin-right: 30px;
+  margin-bottom: 3px;
+  font-size: 30px;
+  font-family: Jua;
+  cursor: pointer;
+  color: rgb(104, 59, 0);
+}
+
+.GoodBooks__title__MoreBtn:hover {
+  color:white;
+}

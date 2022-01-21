@@ -1,0 +1,25 @@
+.signup__btn {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.signup__btn--join {
+  position: relative;
+  color: aliceblue;
+  margin-left: 5%;
+  width: 90%;
+  height: 40px;
+  font-family: jua;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: rgb(153, 83, 36);
+  box-shadow: 2px 2px 2px rgb(104, 43, 43);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.signup__btn--join:hover {
+  background-color: rgb(177, 108, 43);
+}
+.signup__btn--join:active {
+  box-shadow: none;
+}

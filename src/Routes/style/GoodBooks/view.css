@@ -1,0 +1,102 @@
+.GoodBooks__Slide {
+  margin-top: 290px;
+}
+
+.GoodBooks__View {
+  width: 1040px;
+  height: 320px;
+  margin-top: 10px;
+  
+  display: flex;
+  justify-content: space-around;
+}
+
+.GoodBooks__View__box {
+  position: relative;
+}
+
+.GoodBooks__View__box > img {
+  width: 190px;
+  height: 230px;
+  border: 2px solid rgb(59, 46, 0);
+  background: rgba(160, 104, 0, 0.678);
+  box-shadow: 3px 2px 4px rgba(77, 59, 0, 0.671);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.GoodBooks__View__box__contents--text {
+  width: 190px;
+  height: 70px;
+  margin-top: 3px;
+  border: 3px solid rgb(131, 74, 0);
+  background: rgb(241, 185, 0);
+  box-shadow: 4px 4px 5px rgba(112, 86, 0, 0.753);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.GoodBooks__View__box__contents--text > span:nth-child(1) {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: rgba(53, 53, 53, 0.884);
+}
+
+.GoodBooks__View__box__contents--text > span:nth-child(2) {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  color: rgba(53, 53, 53, 0.767);
+}
+
+.GoodBooks__View__box--cover {
+  position: absolute;
+  width: 195px;
+  height: 233px;
+  z-index: 1;
+  border-radius: 15px;
+  opacity: 0;
+  transition: 0.4s;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  
+  background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.GoodBooks__View__box--cover:hover {
+  opacity: 1;
+}
+
+.GoodBooks__View__box__cover--detail {
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.GoodBooks__View__box__cover--detail:hover {
+  color: rgb(241, 185, 0); 
+  text-decoration: none;
+}
+
+.GoodBooks__View__box__cover--like {
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.GoodBooks__View__box__cover--like:hover {
+  color: rgb(241, 185, 0); 
+  text-decoration: none;
+}

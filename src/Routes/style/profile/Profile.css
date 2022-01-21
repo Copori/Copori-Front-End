@@ -1,0 +1,19 @@
+html {
+  background-color: rgb(252, 206, 116);
+}
+.profile {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  display: flex;
+  height: 100vh;
+  background-color: rgb(252, 206, 116);
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  align-content: center;
+}
+.profile__box {
+  width: 600px;
+  height: 600px;
+}

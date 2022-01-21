@@ -1,0 +1,50 @@
+.profile__body {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-top: 40px;
+}
+.profile__body--img {
+  position: relative;
+  margin: 20px auto 0 20px;
+  padding: auto;
+  width: 150px;
+  height: 150px;
+  background-color: #ccc;
+  float: left;
+  border: 4px solid rgb(131, 74, 0);
+}
+.profile__body--input {
+  width: 70%;
+  position: relative;
+  padding: 0;
+  float: right;
+  top: 10px;
+}
+.profile__body--input-name,
+.profile__body--input-email,
+.profile__body--input-pw {
+  width: 85%;
+  padding: 10px;
+  background-color: rgb(252, 206, 116);
+  margin-bottom: 10px;
+  float: right;
+  margin-right: 15px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid rgb(131, 74, 0);
+}
+.profile__body--input-name {
+}
+.profile__body--input-email {
+}
+.profile__body--input-pw {
+}
+.profile__body--input-name::placeholder,
+.profile__body--input-email::placeholder,
+.profile__body--input-pw::placeholder {
+  color: rgb(165, 121, 0);
+  font-weight: 700;
+}

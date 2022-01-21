@@ -1,0 +1,16 @@
+.signup__footer {
+  position: relative;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+.signup__footer--info,
+.signup__footer--login {
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.signup__footer--login {
+  font-weight: 700;
+}

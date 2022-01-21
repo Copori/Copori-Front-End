@@ -1,0 +1,100 @@
+
+.BookDetail__Review {
+    margin-top: 20px;
+    width: 600px;
+    height: auto;
+  }
+  
+  .BookDetail__Review__title {
+    display: block;
+    font-size: 38px;
+    font-family: Pacifico;
+    color: rgb(85, 48, 0);
+    text-shadow: 2px 1px 1px rgb(175, 99, 1);
+    padding-bottom: 12px;
+  }
+  
+  .BookDetail__Reivew__contents {
+    width: 100%;
+    border: 4px solid rgb(78, 44, 0);
+    border-radius: 10px;
+    background-color: coral;
+  }
+  
+  .BookDetail__Reivew__contents__box {
+    width: 560px;
+    height: 140px;
+    background-color: moccasin;
+    border-radius: 20px;
+    margin: 20px;
+    position: relative;
+  }
+
+  .BookDetail__Reivew__contents__box--star {
+    width: 100%;
+    height: 40px;
+    font-size: 30px;
+    margin-left: 15px;
+    padding: 5px 0px;
+    color: rgb(175, 70, 0);
+  }
+  
+  .BookDetail__Reivew__contents__box--star > input {
+    display: none;
+  }
+
+  .BookDetail__Reivew__contents__box--star  > label {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+  
+  .BookDetail__Reivew__contents__box--star > label:hover {
+    opacity: 1;
+  }
+
+  .BookDetail__Reivew__contents__box--id {
+    margin-left: 20px;
+    margin-top: 5px;
+    width: 100%;
+    height: 25px;
+    font-size: 23px;
+    font-family: Jua;
+  }
+
+  .BookDetail__Reivew__contents__box--text {
+    margin-left: 25px;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    margin-top: 10px;
+    font-family: Jua;
+  }
+
+  .BookDetail__Reivew__contents--cancel {
+    position: absolute;
+    font-size: 25px;
+    color: rgba(54, 54, 54, 0.548);
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+
+  .BookDetail__Reivew__contents--renew {
+    position: absolute;
+    font-size: 25px;
+    top: 10px;
+    right: 45px;
+    cursor: pointer;
+    color: rgba(54, 54, 54, 0.753);
+  }
+  
+  .BookDetail__Reivew__contents__box--text >span> input {
+  width: 90%;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid rgb(131, 74, 0);
+  background-color: moccasin;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px
+  }

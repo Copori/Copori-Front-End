@@ -1,0 +1,26 @@
+html {
+  background-color: rgb(252, 206, 116);
+}
+.signup {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  display: flex;
+  height: 100vh;
+  background-color: rgb(252, 206, 116);
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  align-content: center;
+}
+.signup__box {
+  position: relative;
+  background-color: rgb(242, 220, 1);
+  width: 400px;
+  height: auto;
+  top: 50px;
+  margin-bottom: 50px;
+  border: 5px solid rgb(131, 74, 0);
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgb(128, 94, 3);
+}

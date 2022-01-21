@@ -1,0 +1,25 @@
+.profile__info {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-top: 40px;
+}
+.profile__info--textarea {
+  position: relative;
+  width: 95%;
+  float: right;
+  left: 20px;
+}
+.profile__info--textarea-info {
+  width: 100%;
+  height: 300px;
+  min-height: 30px;
+  background-color: rgb(252, 206, 116);
+  outline: none;
+  box-sizing: border-box;
+  font-size: 15px;
+  resize: none;
+  overflow: auto;
+  border: none;
+  border: 2px solid rgb(131, 74, 0);
+}

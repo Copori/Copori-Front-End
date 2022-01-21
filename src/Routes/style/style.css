@@ -1,0 +1,29 @@
+@import "./reset.css";
+
+/* Font-Family-main */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+
+/* TItle */
+@import "./title/title.css";
+
+/* GoodBooks */
+@import "./GoodBooks/goodBooks.css";
+@import "./GoodBooks/view.css";
+@import "./GoodBooks/checkBooks.css";
+
+/* Book Detail */
+@import "./bookDetail/bookDetail.css";
+@import "./bookDetail/review.css";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(252, 206, 116);
+}
+
+a:link { color: white; text-decoration: none;}
+a:visited { color: white; text-decoration: none;}
