@@ -21,24 +21,57 @@ function Login() {
 
   useEffect(()=>{
     localStorage.setItem('JWT', jwt);
-    console.log(jwt);
-  })
+    console.log("jwt 토큰씨팔 : " + jwt);
+  }, [jwt])
 
-  const onClickLogin = (e) => {
+  // const onClickLogin = (e) => {
+  //   e.preventDefault();
+
+  //   axios.post('http://localhost:8080/api/login', {
+  //   //   headers: {
+  //   //     Authorization : `Bearer ${jwt}`,
+  //   // },
+  //     username: inputId,
+  //     password : inputPw
+  //   })
+  //       .then(function (response) {
+  //         setJwt(response.data.token);
+  //         localStorage.setItem('JWT', jwt);
+  //         navigate("/", { replace: true });
+  //       })
+  // };
+
+  async function onClickLogin(e) {
     e.preventDefault();
 
-    axios.post('http://localhost:8080/api/login', {
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
       username: inputId,
       password : inputPw
-    })
-        .then(function (response) {
-          console.log(response.data.token);
-          setJwt(response.data.token);
-          navigate("/", { replace: true });
-        })
+    });
+      console.log("data정보: " + JSON.stringify(response.data));
+      console.log("header정보 : " + JSON.stringify(response.headers));
+      setJwt(response.data.token);
+      navigate("/", { replace: true });
+    } catch (error) {
+      console.error(error);
+    }
+    
+
+        // .then(function (response) {
+        //   setJwt(response.data.token);
+        //   // ============================================== 이재민 하기 로직추가 ====================================
+        //   console.log("ResponseHeader값은 : ? " + JSON.stringify(response.headers));
+        //   localStorage.setItem('JWT', jwt);
+        //   navigate("/", { replace: true });
+        // })
   };
 
-  const onClickSignin = () => {};
+  const onClickSignin = () => {
+
+    navigate("/signUp", { replace: true });
+
+  };
 
   return (
       <form>
@@ -85,7 +118,7 @@ function Login() {
               >
                 로그인
               </button>
-              <Link to="/signUp">
+              {/* <Link to="/signUp"> */}
               <button
                   type="submit"
                   className="login__btn--signup"
@@ -93,7 +126,7 @@ function Login() {
               >
                 회원가입
               </button>
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
         </div>

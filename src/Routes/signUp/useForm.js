@@ -21,14 +21,14 @@ function useForm({ initialValues, onSubmit, validate }) {
   };
 
   // 제출 이벤트 처리 : useEffect()
-  useEffect(() => {
-    if (submitting) {
-      if (Object.keys(errors).length === 0) {
-        onSubmit(values);
-      }
-      setSubmitting(false);
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (submitting) {
+  //     if (Object.keys(errors).length === 0) {
+  //       onSubmit(values);
+  //     }
+  //     setSubmitting(false);
+  //   }
+  // }, [errors]);
 
   return {
     values,

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useForm from "./useForm";
 import validate from "./validate";
 import "../style/signUp/style.css";
@@ -20,6 +21,8 @@ function Signup() {
     validate,
   });
 
+  const navigate = useNavigate();
+
   return (
     <div className="signup">
       <div className="signup__box">
@@ -38,10 +41,14 @@ function Signup() {
                   password: password,
                 })
                 .then(function (response) {
-                  console.log(response);
+                  console.log("reseponse " + response);
                   // setSuccess(response.data.isSuccess);
                   // setMessage(response.data.message);
-                });
+                  navigate("/login");
+                })
+                .catch(error => {
+                  console.log("error" + error.response);
+              });
             })
           }
         >
@@ -54,11 +61,10 @@ function Signup() {
                 className="signup__body--input-id"
                 placeholder="아이디를 입력하세요."
                 onChange={
-                  (handleChange,
                   (e) => {
                     console.log(e.target.value);
                     setId(e.target.value);
-                  })
+                  }
                 }
               />
               {errors.Vid && (
@@ -72,10 +78,10 @@ function Signup() {
                 className="signup__body--input-email"
                 placeholder="이메일을 입력하세요."
                 onChange={
-                  (handleChange,
+                  
                   (e) => {
                     setEmail(e.target.value);
-                  })
+                  }
                 }
               />
               {errors.Vemail && (
@@ -91,10 +97,9 @@ function Signup() {
                 className="signup__body--input-pw"
                 placeholder="비밀번호를 입력하세요."
                 onChange={
-                  (handleChange,
                   (e) => {
                     setPassword(e.target.value);
-                  })
+                  }
                 }
               />
               {errors.Vpassword && (
@@ -119,11 +124,11 @@ function Signup() {
             </div>
           </div>
           <div className="signup__btn">
-            <Link to="/login">
+            
             <button type="submit" className="signup__btn--join">
               가입하기
             </button>
-            </Link>
+
           </div>
         </form>
       </div>
