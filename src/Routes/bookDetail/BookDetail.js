@@ -5,6 +5,7 @@ import {useState} from "react";
 import { useLocation, Link } from 'react-router-dom';
 import {BsFillStarFill} from "react-icons/bs";
 import {FaHeart} from "react-icons/fa";
+import axios from "axios";
 
 
 // 쿼리 뽑는 함수
@@ -55,8 +56,10 @@ console.log(data);
 // useEffect
 useEffect(() => {
   getBooks();
+  axios.get("http://localhost:8080/api/")
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
+
   return (
     <div className="BookDetail">
       {loading? "Loding":

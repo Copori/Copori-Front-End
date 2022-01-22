@@ -8,6 +8,7 @@ function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   let [jwt, setJwt] = useState("");
+  let [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
   const handleInputId = (e) => {
@@ -20,11 +21,18 @@ function Login() {
 
   useEffect(() => {
     localStorage.setItem("JWT", jwt);
+    localStorage.setItem("userId", userId);
     console.log("jwt : " + jwt);
-  }, [jwt]);
+  }, [jwt, userId]);
 
   const onClickLogin = (e) => {
     e.preventDefault();
+
+    if (inputId === "") {
+      alert("아이디를 입력하세요");
+    } else if (inputPw === "") {
+      alert("비밀번호를 입력하세요");
+    }
 
     axios
       .post("http://localhost:8080/api/login", {
@@ -36,7 +44,7 @@ function Login() {
       })
       .then(function (response) {
         setJwt(response.data.token);
-        localStorage.setItem("JWT", jwt);
+        setUserId(response.data.userId);
         navigate("/", { replace: true });
       });
   };
@@ -101,24 +109,24 @@ function Login() {
                 onChange={handleInputPw}
               />
             </div>
-          </div>
-          <div className="login__btn">
-            <button
-              type="submit"
-              className="login__btn--signin"
-              onClick={onClickLogin}
-            >
-              로그인
-            </button>
-            {/* <Link to="/signUp"> */}
-            <button
-              type="submit"
-              className="login__btn--signup"
-              onClick={onClickSignin}
-            >
-              회원가입
-            </button>
-            {/* </Link> */}
+            <div className="login__btn">
+              <button
+                type="submit"
+                className="login__btn--signin"
+                onClick={onClickLogin}
+              >
+                로그인
+              </button>
+              {/* <Link to="/signUp"> */}
+              <button
+                type="submit"
+                className="login__btn--signup"
+                onClick={onClickSignin}
+              >
+                회원가입
+              </button>
+              {/* </Link> */}
+            </div>
           </div>
         </div>
       </div>
