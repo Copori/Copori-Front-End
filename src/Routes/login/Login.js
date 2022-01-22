@@ -21,7 +21,7 @@ function Login() {
 
   useEffect(()=>{
     localStorage.setItem('JWT', jwt);
-    console.log("jwt 토큰씨팔 : " + jwt);
+    console.log("jwt : " + jwt);
   }, [jwt])
 
   // const onClickLogin = (e) => {

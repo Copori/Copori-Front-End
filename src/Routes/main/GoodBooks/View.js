@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 function View({ totalBooks, booksArray, bookToggle }) {
   const [chooseList, setChooseList] = useState([]);
+  const [bookId,setBookId] = useState();
   const setting = new Set(chooseList);
   const settingList = [...setting];
 
@@ -15,6 +16,14 @@ function View({ totalBooks, booksArray, bookToggle }) {
     console.dir(urll);
     setChooseList(chooseList.concat(totalBooks.filter((book)=>book.title == urll)));
     console.log(chooseList);
+
+    const url1 = chooseList[0].url;
+    console.log("type of Url : " +  typeof(url1));
+    console.log("length : " + url1.length);
+    console.log(url1);
+    setBookId(url1.substr(65));
+    console.log(bookId);
+
     console.log(bookToggle);
   }
 
@@ -68,7 +77,8 @@ function View({ totalBooks, booksArray, bookToggle }) {
              <span className="GoodBooks__CheckBooks__text--recommender">추천자 : {book.subDescription}</span>
              </div>
            </div>
-           ))}
+           ))
+        }
       </div>
       }
     </div>

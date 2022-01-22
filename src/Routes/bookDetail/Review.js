@@ -41,7 +41,7 @@ const Review = ({bookId}) => {
             })
             setWriteToggle(false);
         } else {
-            axios.patch('http://localhost:8080/api/reviews' , {
+            axios.patch('http://localhost:8080/api/reviews/1' , {
                 review_score : star,
                 review_content : text
             },

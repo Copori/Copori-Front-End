@@ -12,7 +12,7 @@ import {
 function GoodBooks() {
   //API Constants
   const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
-  const SECRET_KEY = "ac30a767-f246-437a-b572-9cc6d2b9c1e9";
+  const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
   let pageNum = 0; //total books = 825
   let countBook = 5; // 불러올 책의 개수
 
