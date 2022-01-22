@@ -44,6 +44,18 @@
 .profile__btn--save:hover {
   background-color: rgb(177, 108, 43);
 }
+.profile__btn--delete {
+  position: relative;
+  color: aliceblue;
+  font-family: jua;
+  margin: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: red;
+  box-shadow: 2px 2px 2px rgb(104, 43, 43);
+  border-radius: 10px;
+  cursor: pointer;
+}
 .profile__btn--save:active {
   box-shadow: none;
 }

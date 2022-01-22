@@ -128,7 +128,7 @@ function Profile() {
                   <Link to="/">
                     <button
                       type="submit"
-                      className="profile__btn--save"
+                      className="profile__btn--delete"
                       onClick={handleDelete}
                     >
                       회원탈퇴
