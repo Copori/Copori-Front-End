@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 import { AiOutlineRead, AiOutlineKey } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -7,6 +7,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 function Title() {
   const [toggle, setToggle] = useState(true);
   let isAuthorized = localStorage.getItem("JWT");
+  const navigate = useNavigate();
 
   const onClickLogout = () => {
     localStorage.removeItem('JWT')
@@ -33,7 +34,9 @@ function Title() {
               ? 
               <Link to="/login">
                 <AiOutlineKey />
-                <span>로그인</span>
+                <span onClick={()=>
+                {navigate("/login", { replace: true })}
+                }>로그인</span>
                 </Link>
               : 
                 <span onClick={onClickLogout}>

@@ -15,10 +15,10 @@ function useQuery() {
 const BookDetail = () => {
   // 쿼리 불러오기
   let query = useQuery();
-  let bookUrl = query.get('query');
   console.log(query.get('query'));
-  console.log(bookUrl.slice(-3));
   const querylist = query.get('query');
+  const bookId = querylist.substring(65, 68);
+  console.log(bookId);
 
   //API Constants
   const API_URL = 'http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506';
@@ -91,7 +91,7 @@ const BookDetail = () => {
               <p>{data[0].description}</p>
             </div>
           </div>
-          <Review />
+          <Review bookId={bookId} />
         </div>
       )}
     </div>

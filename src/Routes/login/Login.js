@@ -21,38 +21,54 @@ function Login() {
 
   useEffect(() => {
     localStorage.setItem('JWT', jwt);
-    return;
+    console.log('jwt 토큰씨팔 : ' + jwt);
   }, [jwt]);
 
-  const onClickLogin = e => {
+  // const onClickLogin = (e) => {
+  //   e.preventDefault();
+
+  //   axios.post('http://localhost:8080/api/login', {
+  //   //   headers: {
+  //   //     Authorization : `Bearer ${jwt}`,
+  //   // },
+  //     username: inputId,
+  //     password : inputPw
+  //   })
+  //       .then(function (response) {
+  //         setJwt(response.data.token);
+  //         localStorage.setItem('JWT', jwt);
+  //         navigate("/", { replace: true });
+  //       })
+  // };
+
+  async function onClickLogin(e) {
     e.preventDefault();
 
-    if (inputId === '') {
-      alert('아이디를 입력하세요');
-    } else if (inputPw === '') {
-      alert('비밀번호를 입력하세요');
-    }
-
-    axios
-      .post('http://localhost:8889/api/login', {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
         username: inputId,
         password: inputPw,
-      })
-      .then(function (response) {
-        // console.log(response);
-        // console.log(response.data.token);
-        // console.log('authentication:========>' + JSON.stringify(response.headers.authorization));
-        // console.log('Authorization객체 뽑아오기====>' + response.headers['authorization']);
-        setJwt(response.data.token); //이거 무슨 용도인지 물어보기
-        //백으로 토큰 보내고싶
-        navigate('/', { replace: true });
       });
-  };
+      console.log('data정보: ' + JSON.stringify(response.data));
+      console.log('header정보 : ' + JSON.stringify(response.headers));
+      setJwt(response.data.token);
+      navigate('/', { replace: true });
+    } catch (error) {
+      console.error(error);
+    }
 
-  const onClickSignin = () => {};
+    // .then(function (response) {
+    //   setJwt(response.data.token);
+    //   // ============================================== 이재민 하기 로직추가 ====================================
+    //   console.log("ResponseHeader값은 : ? " + JSON.stringify(response.headers));
+    //   localStorage.setItem('JWT', jwt);
+    //   navigate("/", { replace: true });
+    // })
+  }
+
+  const onClickSignin = () => {
+    navigate('/signUp', { replace: true });
+  };
 
   return (
     <form>
@@ -74,16 +90,16 @@ function Login() {
               </label>
               <input type="password" name="input_pw" value={inputPw} className="login__body--pw-input" id="input_pw" placeholder="비밀번호를 입력하세요." onChange={handleInputPw} />
             </div>
-          </div>
-          <div className="login__btn">
-            <button type="submit" className="login__btn--signin" onClick={onClickLogin}>
-              로그인
-            </button>
-            <Link to="/signUp">
+            <div className="login__btn">
+              <button type="submit" className="login__btn--signin" onClick={onClickLogin}>
+                로그인
+              </button>
+              {/* <Link to="/signUp"> */}
               <button type="submit" className="login__btn--signup" onClick={onClickSignin}>
                 회원가입
               </button>
-            </Link>
+              {/* </Link> */}
+            </div>
           </div>
         </div>
       </div>
