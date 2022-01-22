@@ -1,33 +1,69 @@
 import { useRef, useState } from 'react';
+import axios from 'axios';
 
 // react Icon
 import { BsFillStarFill } from 'react-icons/bs';
 import { MdOutlineCancel } from 'react-icons/md';
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
-import axios from 'axios';
 
-const Review = () => {
+const Review = ({ bookId }) => {
   const [star, setStar] = useState(0);
   const [text, setText] = useState('');
   const [toggle, setToggle] = useState(true);
+  const [writeToggle, setWriteToggle] = useState(true);
+
+  const accessToken = localStorage.getItem('JWT');
+  console.log('accessToke이 담기나요? ' + accessToken);
+
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+
   // 수정 버튼 활성화/비 활성화
-  const onRewrite = () => {
+  const onToggle = () => {
     setToggle(toggle => !toggle);
   };
 
-  const onChange = e => setText(e.target.value);
-  let getLocalStorageToken = localStorage.getItem('JWT') || '';
-  axios.post('http://localhost:8889/api/reviews', {
-    headers: {
-      // Authorization: `Bearer ${jwt}`,
-      Authorization: `Bearer ${getLocalStorageToken}`,
-    },
-    //   book_id: ,
-    //   review_score: star,
-    //   review_content: text
-  });
+  const onWrite = () => {
+    if (writeToggle === true) {
+      axios
+        .post(
+          'http://localhost:8080/api/reviews',
+          {
+            book_id: bookId,
+            review_score: star,
+            review_content: text,
+          },
+          {
+            headers: headers,
+          }
+        )
+        .then(function (response) {
+          console.log('글쓰기 POST 후처리 : ' + response);
+        });
+      setWriteToggle(false);
+    } else {
+      axios
+        .patch(
+          'http://localhost:8080/api/reviews',
+          {
+            review_score: star,
+            review_content: text,
+          },
+          {
+            headers: {
+              token: localStorage.getItem('JWT'),
+            },
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+        });
+    }
+  };
 
+  const onChange = e => setText(e.target.value);
   console.log(text);
 
   // 별 표시 함수
@@ -145,8 +181,8 @@ const Review = () => {
               <span>{text}</span>
             </div>
           )}
-          <div onClick={onRewrite} className="BookDetail__Reivew__contents--renew">
-            {toggle ? <AiOutlineCheckCircle /> : <BsPencilSquare />}
+          <div onClick={onToggle} className="BookDetail__Reivew__contents--renew">
+            {toggle ? <AiOutlineCheckCircle onClick={onWrite} /> : <BsPencilSquare />}
           </div>
           <div className="BookDetail__Reivew__contents--cancel">
             <MdOutlineCancel />
