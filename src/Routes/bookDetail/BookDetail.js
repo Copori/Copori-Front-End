@@ -13,21 +13,12 @@ function useQuery() {
 }
 
 const BookDetail = () => {
-// 쿼리 불러오기
-let query = useQuery();
-console.log(query.get("query"));
-const querylist = query.get("query");
-const bookId = querylist.substring(65,68);
-console.log(bookId);
-
-  //API Constants
-const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
-const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
-
-  //API variables
-const [loading, setLoading] = useState(true);
-const [books, setBooks] = useState([]);
-let data = [];
+    // 쿼리 불러오기
+    let query = useQuery();
+    console.log(query.get('query'));
+    const querylist = query.get('query');
+    const bookId = querylist.substring(65, 68);
+    console.log(bookId);
 
     //API Constants
     const API_URL =
@@ -122,16 +113,11 @@ let data = [];
                             <p>{data[0].description}</p>
                         </div>
                     </div>
-                    <Review />
+                    <Review bookId={bookId} />
                 </div>
             )}
         </div>
-      </div>
-      <Review bookId = {bookId} />
-      </div>
-      }
-    </div>
-  );
+    );
 };
 
 export default BookDetail;

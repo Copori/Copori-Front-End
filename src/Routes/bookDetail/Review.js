@@ -1,61 +1,67 @@
-import {useRef, useState} from "react";
-import axios from "axios";
+import { useRef, useState } from 'react';
+import axios from 'axios';
 
 // react Icon
 import { BsFillStarFill } from 'react-icons/bs';
 import { MdOutlineCancel } from 'react-icons/md';
 import { BsPencilSquare } from 'react-icons/bs';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { useEffect } from 'react';
 
-const Review = ({bookId}) => {
+const Review = ({ bookId }) => {
     const [star, setStar] = useState(0);
     const [text, setText] = useState('');
     const [toggle, setToggle] = useState(true);
     const [writeToggle, setWriteToggle] = useState(true);
 
-    const accessToken = localStorage.getItem("JWT");
-    console.log("accessToke이 담기나요? " + accessToken);
+    const accessToken = localStorage.getItem('JWT');
+    console.log('accessToke이 담기나요? ' + accessToken);
 
     const headers = {
-        'Authorization' : `Bearer ${accessToken}`
-    }
+        Authorization: `Bearer ${accessToken}`,
+    };
 
     // 수정 버튼 활성화/비 활성화
-    const onToggle = () =>{
-        setToggle((toggle)=>!toggle);
-    }
+    const onToggle = () => {
+        setToggle(toggle => !toggle);
+    };
 
     const onWrite = () => {
-            if(writeToggle === true) {
-                axios.post('http://localhost:8080/api/reviews', {
-                
-                 book_id : bookId,
-                 review_score : star,
-                 review_content : text
-            },{
-                headers: headers
-            }
-            )
-                .then(function(response) {
-                console.log("글쓰기 POST 후처리 : " + response);
-            })
+        if (writeToggle === true) {
+            axios
+                .post(
+                    'http://localhost:8080/api/reviews',
+                    {
+                        book_id: bookId,
+                        review_score: star,
+                        review_content: text,
+                    },
+                    {
+                        headers: headers,
+                    }
+                )
+                .then(function (response) {
+                    console.log('글쓰기 POST 후처리 : ' + response);
+                });
             setWriteToggle(false);
         } else {
-            axios.patch('http://localhost:8080/api/reviews' , {
-                review_score : star,
-                review_content : text
-            },
-            {
-              headers: {
-                "token": localStorage.getItem("JWT")
-              }
-            })
-                .then(function(response) {
-                console.log(response)
-            })
+            axios
+                .patch(
+                    'http://localhost:8080/api/reviews',
+                    {
+                        review_score: star,
+                        review_content: text,
+                    },
+                    {
+                        headers: {
+                            token: localStorage.getItem('JWT'),
+                        },
+                    }
+                )
+                .then(function (response) {
+                    console.log(response);
+                });
         }
-    }
+    };
 
     const onChange = e => setText(e.target.value);
     console.log(text);
@@ -101,21 +107,6 @@ const Review = ({bookId}) => {
         starPick.current.children[6].style.opacity = '0.3';
         starPick.current.children[8].style.opacity = '0.3';
     };
-
-    // 수정 버튼 활성화/비 활성화
-    const onRewrite = () => {
-        setToggle(toggle => !toggle);
-    };
-
-    // get jwt token
-    useEffect(() => {
-        const jwtToken = localStorage.getItem('JWT');
-        console.log('localStorage에서 갖고온 토큰은 : ' + jwtToken);
-    }, []);
-
-    // review onChange Event
-    const onChange = e => setText(e.target.value);
-    console.log(text);
 
     const starPick = useRef();
 
@@ -191,22 +182,36 @@ const Review = ({bookId}) => {
                         <span>닉네임: insu</span>
                     </div>
 
-            {/* 리뷰 내용 부분 */}
-            {toggle?
-            <div className="BookDetail__Reivew__contents__box--text">
-                <span><input onChange ={onChange} type="text" placeholder="리뷰를 입력하세요" /></span>
-            </div>
-            :
-            <div className="BookDetail__Reivew__contents__box--text">
-              <span>{text}</span>
-            </div>
-            }
-            <div onClick={onToggle} className='BookDetail__Reivew__contents--renew'>
-                {toggle?
-                <AiOutlineCheckCircle onClick = {onWrite}/>
-                :
-                <BsPencilSquare/>
-                }
+                    {/* 리뷰 내용 부분 */}
+                    {toggle ? (
+                        <div className="BookDetail__Reivew__contents__box--text">
+                            <span>
+                                <input
+                                    onChange={onChange}
+                                    type="text"
+                                    placeholder="리뷰를 입력하세요"
+                                />
+                            </span>
+                        </div>
+                    ) : (
+                        <div className="BookDetail__Reivew__contents__box--text">
+                            <span>{text}</span>
+                        </div>
+                    )}
+                    <div
+                        onClick={onToggle}
+                        className="BookDetail__Reivew__contents--renew"
+                    >
+                        {toggle ? (
+                            <AiOutlineCheckCircle onClick={onWrite} />
+                        ) : (
+                            <BsPencilSquare />
+                        )}
+                    </div>
+                    <div className="BookDetail__Reivew__contents--cancel">
+                        <MdOutlineCancel />
+                    </div>
+                </div>
             </div>
         </div>
     );
