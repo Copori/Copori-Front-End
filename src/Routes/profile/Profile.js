@@ -41,6 +41,7 @@ function Profile() {
         console.log("delete : " + response);
         localStorage.removeItem("JWT");
         localStorage.removeItem("userId");
+        alert("회원탈퇴가 완료되었습니다.");
         navigate("/");
       });
   };
