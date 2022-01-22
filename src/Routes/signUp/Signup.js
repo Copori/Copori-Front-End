@@ -26,8 +26,6 @@ function Signup() {
     validate,
   });
 
-  const navigate = useNavigate();
-
   return (
     <div className="signup">
       <div className="signup__box">
