@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../style/profile/style.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../style/profile/style.css';
 
 function Profile() {
   let [toggle, setToggle] = useState(false);
-  let [username, setUsername] = useState("");
-  let [email, setEmail] = useState("");
+  let [username, setUsername] = useState('');
+  let [email, setEmail] = useState('');
 
   const ChangeValue = () => {
     if (toggle === false) {
       setToggle(true);
-    } else if (username === "") {
-      alert("아이디를 입력해주세요.");
+    } else if (username === '') {
+      alert('아이디를 입력해주세요.');
       setToggle(true);
-    } else if (email === "") {
-      alert("이메일을 입력해주세요.");
+    } else if (email === '') {
+      alert('이메일을 입력해주세요.');
       setToggle(true);
     } else {
       setToggle(false);
@@ -22,15 +22,13 @@ function Profile() {
   };
 
   const handleDelete = () => {
-    axios
-      .patch("http://localhost:8080/api/profile/delete/4")
-      .then(function (response) {
-        console.log("delete : " + response);
-      });
+    axios.patch('http://localhost:8889/api/profile/delete/{userId}').then(function (response) {
+      console.log('delete : ' + response);
+    });
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/profile/4").then(function (response) {
+    axios.get('http://localhost:8889/api/profile/{userId}').then(function (response) {
       console.log(response);
       setUsername(response.data.data.username);
       setEmail(response.data.data.email);
@@ -39,11 +37,11 @@ function Profile() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={e => {
         e.preventDefault();
 
         axios
-          .patch("http://localhost:8080/api/profile/4", {
+          .patch('http://localhost:8889/api/profile/{userId}', {
             username: username,
             email: email,
           })
@@ -67,9 +65,9 @@ function Profile() {
                 name="id"
                 placeholder="아이디"
                 className="profile__body--input-id"
-                disabled={toggle ? "" : "disabled"}
+                disabled={toggle ? '' : 'disabled'}
                 value={username}
-                onChange={(e) => {
+                onChange={e => {
                   setUsername(e.target.value);
                 }}
               ></input>
@@ -79,9 +77,9 @@ function Profile() {
                 name="email"
                 placeholder="이메일"
                 className="profile__body--input-email"
-                disabled={toggle ? "" : "disabled"}
+                disabled={toggle ? '' : 'disabled'}
                 value={email}
-                onChange={(e) => {
+                onChange={e => {
                   setEmail(e.target.value);
                 }}
               />
@@ -92,18 +90,10 @@ function Profile() {
               <div className="profile__info--textarea">
                 <textarea className="profile__info--textarea-info" />
                 <div className="profile__btn">
-                  <button
-                    type="submit"
-                    className="profile__btn--save"
-                    onClick={ChangeValue}
-                  >
-                    {toggle ? "수정하기" : "회원정보 수정"}
+                  <button type="submit" className="profile__btn--save" onClick={ChangeValue}>
+                    {toggle ? '수정하기' : '회원정보 수정'}
                   </button>
-                  <button
-                    type="submit"
-                    className="profile__btn--save"
-                    onClick={handleDelete}
-                  >
+                  <button type="submit" className="profile__btn--save" onClick={handleDelete}>
                     회원탈퇴
                   </button>
                 </div>

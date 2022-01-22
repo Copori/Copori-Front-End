@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import useForm from "./useForm";
-import { useNavigate } from "react-router-dom";
-import validate from "./validate";
-import "../style/signUp/style.css";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import useForm from './useForm';
+import { useNavigate } from 'react-router-dom';
+import validate from './validate';
+import '../style/signUp/style.css';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Signup() {
-  let [username, setId] = useState("");
-  let [password, setPassword] = useState("");
-  let [email, setEmail] = useState("");
-  let [message, setMessage] = useState("");
+  let [username, setId] = useState('');
+  let [password, setPassword] = useState('');
+  let [email, setEmail] = useState('');
+  let [message, setMessage] = useState('');
   let [success, setSuccess] = useState(true);
-  let [pwCheck, setPwCheck] = useState("");
+  let [pwCheck, setPwCheck] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
   const navigate = useNavigate();
 
   const { values, errors, submitting, handleChange, handleSubmit } = useForm({
-    initialValues: { Vid: "", Vemail: "", Vpassword: "", Vpasswordcheck: "" },
-    onSubmit: (values) => {
+    initialValues: { Vid: '', Vemail: '', Vpassword: '', Vpasswordcheck: '' },
+    onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },
     validate,
@@ -33,36 +33,36 @@ function Signup() {
           <span className="signup__header--logo">Read&amp;Review</span>
         </div>
         <form
-          onSubmit={(e) => {
+          onSubmit={e => {
             e.preventDefault();
 
             //유효성 검증
-            if (username === "") {
-              alert("아이디를 입력하세요.");
-            } else if (email === "") {
-              alert("이메일을 입력하세요.");
-            } else if (password === "") {
-              alert("비밀번호를 입력하세요.");
-            } else if (pwCheck === "") {
-              alert("비밀번호를 다시 입력해주세요.");
+            if (username === '') {
+              alert('아이디를 입력하세요.');
+            } else if (email === '') {
+              alert('이메일을 입력하세요.');
+            } else if (password === '') {
+              alert('비밀번호를 입력하세요.');
+            } else if (pwCheck === '') {
+              alert('비밀번호를 다시 입력해주세요.');
             } else if (password !== pwCheck) {
-              alert("비밀번호가 일치하지 않습니다.");
+              alert('비밀번호가 일치하지 않습니다.');
             } else {
               if (toggle === false) {
                 axios
-                  .post("http://localhost:8080/api/signup", {
+                  .post('http://localhost:8889/api/signup', {
                     username: username,
                     password: password,
                     email: email,
                   })
                   .then(function (response) {
-                    console.log("response" + response);
-                    navigate("/login", { replace: true });
+                    console.log('response' + response);
+                    navigate('/login', { replace: true });
                     // setSuccess(response.data.isSuccess);
                     // setMessage(response.data.message);
                   });
               } else {
-                alert("입력된 값이 유효하지 않습니다.");
+                alert('입력된 값이 유효하지 않습니다.');
               }
             }
           }}
@@ -75,14 +75,12 @@ function Signup() {
                 name="username"
                 className="signup__body--input-id"
                 placeholder="아이디를 입력하세요."
-                onChange={(e) => {
+                onChange={e => {
                   console.log(e.target.value);
                   setId(e.target.value);
                 }}
               />
-              {errors.Vid && (
-                <span className="signup__body--id-error">{errors.Vid}</span>
-              )}
+              {errors.Vid && <span className="signup__body--id-error">{errors.Vid}</span>}
 
               <span className="signup__body--email-title">이메일</span>
               <input
@@ -90,15 +88,11 @@ function Signup() {
                 name="email"
                 className="signup__body--input-email"
                 placeholder="이메일을 입력하세요."
-                onChange={(e) => {
+                onChange={e => {
                   setEmail(e.target.value);
                 }}
               />
-              {errors.Vemail && (
-                <span className="signup__body--email-error">
-                  {errors.Vemail}
-                </span>
-              )}
+              {errors.Vemail && <span className="signup__body--email-error">{errors.Vemail}</span>}
 
               <span className="signup__body--pw-title">비밀번호</span>
               <input
@@ -106,15 +100,11 @@ function Signup() {
                 name="password"
                 className="signup__body--input-pw"
                 placeholder="비밀번호를 입력하세요."
-                onChange={(e) => {
+                onChange={e => {
                   setPassword(e.target.value);
                 }}
               />
-              {errors.Vpassword && (
-                <span className="signup__body--pw-error">
-                  {errors.Vpassword}
-                </span>
-              )}
+              {errors.Vpassword && <span className="signup__body--pw-error">{errors.Vpassword}</span>}
 
               <span className="signup__body--pwcheck-title">비밀번호 확인</span>
               <input
@@ -122,15 +112,11 @@ function Signup() {
                 name="passwordcheck"
                 className="signup__body--input-pwcheck"
                 placeholder="비밀번호를 다시 입력해주세요."
-                onChange={(e) => {
+                onChange={e => {
                   setPwCheck(e.target.value);
                 }}
               />
-              {errors.Vpasswordcheck && (
-                <span className="signup__body--pwck-error">
-                  {errors.Vpasswordcheck}
-                </span>
-              )}
+              {errors.Vpasswordcheck && <span className="signup__body--pwck-error">{errors.Vpasswordcheck}</span>}
             </div>
           </div>
           <div className="signup__btn">
