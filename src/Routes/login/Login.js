@@ -8,6 +8,7 @@ function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   let [jwt, setJwt] = useState("");
+  let [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
   const handleInputId = (e) => {
@@ -20,8 +21,9 @@ function Login() {
 
   useEffect(()=>{
     localStorage.setItem('JWT', jwt);
+    localStorage.setItem('userId', userId);
     console.log("jwt : " + jwt);
-  }, [jwt])
+  }, [jwt,userId])
 
   // const onClickLogin = (e) => {
   //   e.preventDefault();
@@ -61,6 +63,7 @@ function Login() {
         console.log(response);
         console.log(response.data.token);
         setJwt(response.data.token);
+        setUserId(response.data.userId);
         navigate("/", { replace: true });
       });
   };

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../style/profile/style.css";
 
 function Profile() {
+  const navigate = useNavigate();
+  let [userId, setUserId] = useState("");
   let [toggle, setToggle] = useState(false);
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
@@ -23,14 +26,18 @@ function Profile() {
 
   const handleDelete = () => {
     axios
-      .patch("http://localhost:8080/api/profile/delete/4")
+      .patch(`http://localhost:8080/api/profile/delete/${userId}`)
       .then(function (response) {
         console.log("delete : " + response);
+        localStorage.removeItem("JWT");
+        localStorage.removeItem("userId");
+        navigate("/");
       });
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/profile/4").then(function (response) {
+    setUserId(localStorage.getItem("userId"));
+    axios.get(`http://localhost:8080/api/profile/${userId}`).then(function (response) {
       console.log(response);
       setUsername(response.data.data.username);
       setEmail(response.data.data.email);
@@ -43,7 +50,7 @@ function Profile() {
         e.preventDefault();
 
         axios
-          .patch("http://localhost:8080/api/profile/4", {
+          .patch(`http://localhost:8080/api/profile/${userId}`, {
             username: username,
             email: email,
           })

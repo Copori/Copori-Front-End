@@ -22,23 +22,23 @@ function Title() {
       </div>
       <div className="main__title__box-icon">
         <div className="box-icon__contents">
-          <Link to="/Detail">
+          <Link to="/Profile">
           <AiOutlineRead />
-          <span>서재</span>
+          <span>내 정보</span>
           </Link>
         </div>
         <div>
-          {toggle ? (
             <div className="box-icon__contents">
               {!isAuthorized 
               ? 
-              <Link to="/login">
-                <AiOutlineKey />
                 <span onClick={()=>
                 {navigate("/login", { replace: true })}
-                }>로그인</span>
-                </Link>
+                }>
+                <AiOutlineKey />
+                로그인</span>
               : 
+                
+                
                 <span onClick={onClickLogout}>
                 <AiOutlineKey />
                 로그아웃
@@ -46,12 +46,7 @@ function Title() {
                 
               }
             </div>
-          ) : (
-            <div className="box-icon__contents">
-              <BsFillPersonFill />
-              <span>내 정보</span>
-            </div>
-          )}
+          
         </div>
       </div>
     </div>
