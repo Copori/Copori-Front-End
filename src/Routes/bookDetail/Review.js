@@ -64,7 +64,6 @@ const Review = ({ bookId }) => {
     };
 
     const onChange = e => setText(e.target.value);
-    console.log(text);
 
     // 별 표시 함수
     const onStar5Click = () => {

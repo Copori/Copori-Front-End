@@ -20,7 +20,7 @@ function Login() {
 
     useEffect(() => {
         localStorage.setItem('JWT', jwt);
-        console.log('jwt 토큰씨팔 : ' + jwt);
+        console.log('jwt : ' + jwt);
     }, [jwt]);
 
     // const onClickLogin = (e) => {
@@ -58,14 +58,6 @@ function Login() {
         } catch (error) {
             console.error(error);
         }
-
-        // .then(function (response) {
-        //   setJwt(response.data.token);
-        //   // ============================================== 이재민 하기 로직추가 ====================================
-        //   console.log("ResponseHeader값은 : ? " + JSON.stringify(response.headers));
-        //   localStorage.setItem('JWT', jwt);
-        //   navigate("/", { replace: true });
-        // })
     }
 
     const onClickSignin = () => {
