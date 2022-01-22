@@ -39,7 +39,7 @@ function Signup() {
               e.preventDefault();
               axios
                 .post('http://localhost:8080/api/signup', {
-                  username: id,
+                  username: username,
                   email: email,
                   password: password,
                 })
