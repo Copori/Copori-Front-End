@@ -24,6 +24,7 @@ const Review = ({bookId}) => {
     const onToggle = () =>{
         setToggle((toggle)=>!toggle);
     }
+    
 
     const onWrite = () => {
             if(writeToggle === true) {

@@ -64,8 +64,8 @@ function Profile() {
             username: username,
             email: email,
           },{
-            headers: headers
-          })
+      headers: headers
+    })
           .then(function (response) {
             console.log(username);
             console.log(email);
