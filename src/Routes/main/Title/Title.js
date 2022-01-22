@@ -11,6 +11,7 @@ function Title() {
 
   const onClickLogout = () => {
     localStorage.removeItem("JWT");
+    localStorage.removeItem("userId");
     window.location.replace("/");
   };
 

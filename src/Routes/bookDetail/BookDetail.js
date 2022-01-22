@@ -21,6 +21,32 @@ const BookDetail = () => {
   const bookId = querylist.substring(65, 68);
   console.log(bookId);
 
+  const accessToken = localStorage.getItem("JWT");
+  const userId = localStorage.getItem("userId");
+  console.log(userId);
+
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+
+  const [cnt, setCnt] = useState("");
+  const [avg, setAvg] = useState("");
+
+  axios
+    .get(
+      `http://localhost:8080/api/books/${bookId}/detail`,
+
+      {
+        header: headers,
+      }
+    )
+    .then(function (response) {
+      console.log(response);
+      console.log(response.data);
+      setCnt(response.data.data.likeCnt);
+      setAvg(response.data.data.reviewAvg);
+    });
+
   //API Constants
   const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
   const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
@@ -97,11 +123,15 @@ const BookDetail = () => {
               <div className="BookDetail__Container__subTitle--heart">
                 <FaHeart />
               </div>
-              <div className="BookDetail__Container__subTitle--number">3</div>
+              <div className="BookDetail__Container__subTitle--number">
+                {cnt}
+              </div>
               <div className="BookDetail__Container__subTitle--star">
                 <BsFillStarFill />
               </div>
-              <div className="BookDetail__Container__subTitle--number">3</div>
+              <div className="BookDetail__Container__subTitle--number">
+                {avg}
+              </div>
             </div>
             <div className="BookDetail__Container__subContents">
               <p>{data[0].description}</p>
