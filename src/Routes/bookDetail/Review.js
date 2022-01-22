@@ -1,4 +1,5 @@
 import {useRef, useState} from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 // react Icon
@@ -14,7 +15,6 @@ const Review = ({bookId}) => {
     const [writeToggle, setWriteToggle] = useState(true);
 
     const accessToken = localStorage.getItem("JWT");
-    console.log("accessToke이 담기나요? " + accessToken);
 
     const headers = {
         'Authorization' : `Bearer ${accessToken}`
@@ -28,7 +28,6 @@ const Review = ({bookId}) => {
     const onWrite = () => {
             if(writeToggle === true) {
                 axios.post('http://localhost:8080/api/reviews', {
-                
                  book_id : bookId,
                  review_score : star,
                  review_content : text
@@ -42,6 +41,7 @@ const Review = ({bookId}) => {
             setWriteToggle(false);
         } else {
             axios.patch('http://localhost:8080/api/reviews' , {
+                
                 review_score : star,
                 review_content : text
             },
