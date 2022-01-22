@@ -1,22 +1,17 @@
 import React, { useState } from "react";
-import useForm from "./useForm";
 import { useNavigate } from "react-router-dom";
+import useForm from "./useForm";
 import validate from "./validate";
 import "../style/signUp/style.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Signup() {
-  let [username, setId] = useState("");
+  let [id, setId] = useState("");
   let [password, setPassword] = useState("");
   let [email, setEmail] = useState("");
   let [message, setMessage] = useState("");
   let [success, setSuccess] = useState(true);
-  let [pwCheck, setPwCheck] = useState("");
-
-  const [toggle, setToggle] = useState(false);
-
-  const navigate = useNavigate();
 
   const { values, errors, submitting, handleChange, handleSubmit } = useForm({
     initialValues: { Vid: "", Vemail: "", Vpassword: "", Vpasswordcheck: "" },
@@ -26,6 +21,8 @@ function Signup() {
     validate,
   });
 
+  const navigate = useNavigate();
+
   return (
     <div className="signup">
       <div className="signup__box">
@@ -33,46 +30,34 @@ function Signup() {
           <span className="signup__header--logo">Read&amp;Review</span>
         </div>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-
-            //유효성 검증
-            if (username === "") {
-              alert("아이디를 입력하세요.");
-            } else if (email === "") {
-              alert("이메일을 입력하세요.");
-            } else if (password === "") {
-              alert("비밀번호를 입력하세요.");
-            } else if (pwCheck === "") {
-              alert("비밀번호를 다시 입력해주세요.");
-            } else if (password !== pwCheck) {
-              alert("비밀번호가 일치하지 않습니다.");
-            } else {
-              if (toggle === false) {
-                axios
-                  .post("http://localhost:8080/api/signup", {
-                    username: username,
-                    password: password,
-                    email: email,
-                  })
-                  .then(function (response) {
-                    console.log("response" + response);
-                    navigate("/login", { replace: true });
-                    // setSuccess(response.data.isSuccess);
-                    // setMessage(response.data.message);
-                  });
-              } else {
-                alert("입력된 값이 유효하지 않습니다.");
-              }
-            }
-          }}
+          onSubmit={
+            (handleSubmit,
+            (e) => {
+              e.preventDefault();
+              axios
+                .post("http://localhost:8080/api/signup", {
+                  username: id,
+                  email: email,
+                  password: password,
+                })
+                .then(function (response) {
+                  console.log("reseponse " + response);
+                  // setSuccess(response.data.isSuccess);
+                  // setMessage(response.data.message);
+                  navigate("/login");
+                })
+                .catch((error) => {
+                  console.log("error" + error.response);
+                });
+            })
+          }
         >
           <div className="signup__body">
             <div className="signup__body--input">
               <span className="signup__body--id-title">아이디</span>
               <input
                 type="text"
-                name="username"
+                name="id"
                 className="signup__body--input-id"
                 placeholder="아이디를 입력하세요."
                 onChange={(e) => {
@@ -122,9 +107,7 @@ function Signup() {
                 name="passwordcheck"
                 className="signup__body--input-pwcheck"
                 placeholder="비밀번호를 다시 입력해주세요."
-                onChange={(e) => {
-                  setPwCheck(e.target.value);
-                }}
+                onChange={handleChange}
               />
               {errors.Vpasswordcheck && (
                 <span className="signup__body--pwck-error">
@@ -134,11 +117,9 @@ function Signup() {
             </div>
           </div>
           <div className="signup__btn">
-            {/* <Link to="/login"> */}
             <button type="submit" className="signup__btn--join">
               가입하기
             </button>
-            {/* </Link> */}
           </div>
         </form>
       </div>

@@ -18,6 +18,8 @@ const BookDetail = () => {
 let query = useQuery();
 console.log(query.get("query"));
 const querylist = query.get("query");
+const bookId = querylist.substring(65,68);
+console.log(bookId);
 
   //API Constants
 const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
@@ -87,7 +89,7 @@ useEffect(() => {
           </p>
         </div>
       </div>
-      <Review/>
+      <Review bookId = {bookId} />
       </div>
       }
     </div>
