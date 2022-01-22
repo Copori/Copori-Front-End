@@ -11,6 +11,7 @@ function Title() {
 
   const onClickLogout = () => {
     localStorage.removeItem('JWT')
+    localStorage.removeItem('userId')
     window.location.replace("/")
   };
 
@@ -37,13 +38,10 @@ function Title() {
                 <AiOutlineKey />
                 로그인</span>
               : 
-                
-                
                 <span onClick={onClickLogout}>
                 <AiOutlineKey />
                 로그아웃
                 </span>
-                
               }
             </div>
           
