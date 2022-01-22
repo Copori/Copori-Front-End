@@ -6,7 +6,9 @@
   font-family: pacifico;
   text-shadow: 2px 2px 2px rgb(226, 174, 48);
   text-align: center;
-  color: black;
   cursor: pointer;
   border-bottom: 2px solid rgb(131, 74, 0);
+}
+.profile__header--logo {
+  color: black;
 }

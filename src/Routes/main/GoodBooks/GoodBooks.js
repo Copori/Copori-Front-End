@@ -32,27 +32,29 @@ function GoodBooks() {
   function onRecommandBookToggle() {
     setBookToggle((bookToggle) => (bookToggle = true));
   }
-  
+
   //처음 렌더링 될 때 API를 읽어올 함수
   const getBooks = async () => {
     let bookList = [];
 
     // Main Screen에 표시될 Data
-    for(let i = 1; i<7; i++){
-      const json = await ( await fetch(
-        `${API_URL}?serviceKey=${SECRET_KEY}&numOfRows=${countBook}&pageNo=${pageNum + i}`,
-        {
-          headers: {
-            accept: "application/json",
-          },
-        }
-      )
-    ).json();
+    for (let i = 1; i < 7; i++) {
+      const json = await (
+        await fetch(
+          `${API_URL}?serviceKey=${SECRET_KEY}&numOfRows=${countBook}&pageNo=${
+            pageNum + i
+          }`,
+          {
+            headers: {
+              accept: "application/json",
+            },
+          }
+        )
+      ).json();
       bookList.push(json.response.body.items.item);
-      console.log(bookList[i-1]);
+      console.log(bookList[i - 1]);
     }
 
-    
     // 전체 도서 Data
     const json = await (
       await fetch(
@@ -70,7 +72,7 @@ function GoodBooks() {
     console.log(bookList.concat());
     setLoading(false);
   };
-  
+
   // useEffect
   useEffect(() => {
     getBooks();
@@ -102,7 +104,11 @@ function GoodBooks() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <View totalBooks={books} booksArray = {booklists} bookToggle={bookToggle} />
+          <View
+            totalBooks={books}
+            booksArray={booklists}
+            bookToggle={bookToggle}
+          />
         </div>
       )}
     </div>

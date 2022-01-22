@@ -46,6 +46,24 @@
   display: flex;
   cursor: pointer;
 }
+.box-icon__contents--myicon {
+  font-size: 40px;
+  font-family: Jua;
+  color: rgba(73, 62, 0, 0.911);
+}
+.box-icon__contents--myicon:hover,
+.box-icon__contents--myinfo:hover {
+  color: white;
+}
+.box-icon__contents--logout,
+.box-icon__contents--login {
+  position: relative;
+  right: 20px;
+}
+.box-icon__contents--logout:hover,
+.box-icon__contents--login:hover {
+  color: white;
+}
 .box-icon__contents > span {
   font-size: 40px;
   margin-left: 20px;

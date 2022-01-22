@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../style/profile/style.css";
 
 function Profile() {
   const navigate = useNavigate();
-  let [userId, setUserId] = useState("");
   let [toggle, setToggle] = useState(false);
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
+
+  const accessToken = localStorage.getItem("JWT");
+  const userId = localStorage.getItem("userId");
+  console.log(userId);
+
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
 
   const ChangeValue = () => {
     if (toggle === false) {
@@ -26,7 +33,10 @@ function Profile() {
 
   const handleDelete = () => {
     axios
-      .patch(`http://localhost:8080/api/profile/delete/${userId}`)
+
+      .patch(`http://localhost:8080/api/profile/delete/${userId}`, {
+        headers: headers,
+      })
       .then(function (response) {
         console.log("delete : " + response);
         localStorage.removeItem("JWT");
@@ -36,24 +46,31 @@ function Profile() {
   };
 
   useEffect(() => {
-    setUserId(localStorage.getItem("userId"));
-    axios.get(`http://localhost:8080/api/profile/${userId}`).then(function (response) {
-      console.log(response);
-      setUsername(response.data.data.username);
-      setEmail(response.data.data.email);
-    });
+    axios
+      .get(`http://localhost:8080/api/profile/${userId}`, {
+        headers: headers,
+      })
+      .then(function (response) {
+        console.log(response);
+        setUsername(response.data.data.username);
+        setEmail(response.data.data.email);
+      });
   }, []);
-
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-
         axios
-          .patch(`http://localhost:8080/api/profile/${userId}`, {
-            username: username,
-            email: email,
-          })
+          .patch(
+            `http://localhost:8080/api/profile/${userId}`,
+            {
+              username: username,
+              email: email,
+            },
+            {
+              headers: headers,
+            }
+          )
           .then(function (response) {
             console.log(username);
             console.log(email);
@@ -64,7 +81,9 @@ function Profile() {
       <div className="profile">
         <div className="profile__box">
           <div className="profile__header">
-            <span className="profile__header--logo">Read&amp;Review</span>
+            <Link to="/">
+              <span className="profile__header--logo">Read&amp;Review</span>
+            </Link>
           </div>
           <div className="profile__body">
             <img className="profile__body--img" />
@@ -80,7 +99,6 @@ function Profile() {
                   setUsername(e.target.value);
                 }}
               ></input>
-
               <input
                 type="email"
                 name="email"
@@ -106,13 +124,15 @@ function Profile() {
                   >
                     {toggle ? "수정하기" : "회원정보 수정"}
                   </button>
-                  <button
-                    type="submit"
-                    className="profile__btn--save"
-                    onClick={handleDelete}
-                  >
-                    회원탈퇴
-                  </button>
+                  <Link to="/">
+                    <button
+                      type="submit"
+                      className="profile__btn--save"
+                      onClick={handleDelete}
+                    >
+                      회원탈퇴
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

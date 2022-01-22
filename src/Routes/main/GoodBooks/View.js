@@ -3,27 +3,35 @@ import { HiOutlineHeart } from "react-icons/hi";
 import { GoBook } from "react-icons/go";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function View({ totalBooks, booksArray, bookToggle }) {
   const [chooseList, setChooseList] = useState([]);
-  const [bookId,setBookId] = useState();
+  const [bookId, setBookId] = useState();
   const setting = new Set(chooseList);
   const settingList = [...setting];
 
   const onBookClick = (e) => {
     const urll = e.target.parentElement.title;
-    console.dir(urll);
+
     setChooseList(
       chooseList.concat(totalBooks.filter((book) => book.title == urll))
     );
-    console.log(chooseList);
-
+    console.log(settingList);
     const url1 = chooseList[0].url;
-    console.log("type of Url : " +  typeof(url1));
+    console.log("type of Url : " + typeof url1);
     console.log("length : " + url1.length);
     console.log(url1);
     setBookId(url1.substr(65));
     console.log(bookId);
+
+    axios
+      .put(`http://localhost:8080/api/like/${bookId}`, {
+        bookId: bookId,
+      })
+      .then(function (response) {
+        console.log("bookId: " + bookId);
+      });
 
     console.log(bookToggle);
   };

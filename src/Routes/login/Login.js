@@ -11,6 +11,8 @@ function Login() {
   let [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
+  const [toggle, setToggle] = useState(false);
+
   const handleInputId = (e) => {
     setInputId(e.target.value);
   };
@@ -25,49 +27,50 @@ function Login() {
     console.log("jwt : " + jwt);
   }, [jwt, userId]);
 
-  const onClickLogin = (e) => {
+  // const onClickLogin = (e) => {
+  //   e.preventDefault();
+
+  //   axios.post('http://localhost:8080/api/login', {
+  //   //   headers: {
+  //   //     Authorization : `Bearer ${jwt}`,
+  //   // },
+  //     username: inputId,
+  //     password : inputPw
+  //   })
+  //       .then(function (response) {
+  //         setJwt(response.data.token);
+  //         localStorage.setItem('JWT', jwt);
+  //         navigate("/", { replace: true });
+  //       })
+  // };
+
+  async function onClickLogin(e) {
     e.preventDefault();
 
     if (inputId === "") {
       alert("아이디를 입력하세요");
     } else if (inputPw === "") {
       alert("비밀번호를 입력하세요");
+    } else {
+      if (toggle === false) {
+        axios
+          .post("http://localhost:8080/api/login", {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+            username: inputId,
+            password: inputPw,
+          })
+          .then(function (response) {
+            console.log(response);
+            console.log(response.data.token);
+            setJwt(response.data.token);
+            setUserId(response.data.userId);
+            navigate("/", { replace: true });
+          });
+      }
     }
-
-    axios
-      .post("http://localhost:8080/api/login", {
-        //   headers: {
-        //     Authorization : `Bearer ${jwt}`,
-        // },
-        username: inputId,
-        password: inputPw,
-      })
-      .then(function (response) {
-        setJwt(response.data.token);
-        setUserId(response.data.userId);
-        navigate("/", { replace: true });
-      });
-  };
-
-  // async function onClickLogin(e) {
-  //     e.preventDefault();
-
-  //     try {
-  //         const response = await axios.post(
-  //             'http://localhost:8080/api/login',
-  //             {
-  //                 username: inputId,
-  //                 password: inputPw,
-  //             }
-  //         );
-  //         console.log('data정보: ' + JSON.stringify(response.data));
-  //         console.log('header정보 : ' + JSON.stringify(response.headers));
-  //         setJwt(response.data.token);
-  //         navigate('/', { replace: true });
-  //     } catch (error) {
-  //         console.error(error);
-  //     }
-  // }
+  }
 
   const onClickSignin = () => {
     navigate("/signUp", { replace: true });
@@ -78,7 +81,9 @@ function Login() {
       <div className="login">
         <div className="login__box">
           <div className="login__header">
-            <span className="login__header--logo">Read&amp;Review</span>
+            <Link to="/">
+              <span className="login__header--logo">Read&amp;Review</span>
+            </Link>
           </div>
           <div className="login__body">
             <div className="login__body--id">

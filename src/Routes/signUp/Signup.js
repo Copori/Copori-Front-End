@@ -30,7 +30,9 @@ function Signup() {
     <div className="signup">
       <div className="signup__box">
         <div className="signup__header">
-          <span className="signup__header--logo">Read&amp;Review</span>
+          <Link to="/">
+            <span className="signup__header--logo">Read&amp;Review</span>
+          </Link>
         </div>
         <form
           onSubmit={(e) => {
@@ -72,7 +74,7 @@ function Signup() {
               <span className="signup__body--id-title">아이디</span>
               <input
                 type="text"
-                name="id"
+                name="username"
                 className="signup__body--input-id"
                 placeholder="아이디를 입력하세요."
                 onChange={(e) => {
@@ -122,7 +124,9 @@ function Signup() {
                 name="passwordcheck"
                 className="signup__body--input-pwcheck"
                 placeholder="비밀번호를 다시 입력해주세요."
-                onChange={handleChange}
+                onChange={(e) => {
+                  setPwCheck(e.target.value);
+                }}
               />
               {errors.Vpasswordcheck && (
                 <span className="signup__body--pwck-error">
