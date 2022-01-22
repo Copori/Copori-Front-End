@@ -17,8 +17,6 @@ const BookDetail = () => {
     let query = useQuery();
     console.log(query.get('query'));
     const querylist = query.get('query');
-    const bookId = querylist.substring(65, 68);
-    console.log(bookId);
 
     //API Constants
     const API_URL =
@@ -113,7 +111,7 @@ const BookDetail = () => {
                             <p>{data[0].description}</p>
                         </div>
                     </div>
-                    <Review bookId={bookId} />
+                    <Review />
                 </div>
             )}
         </div>

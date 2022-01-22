@@ -41,8 +41,11 @@ const Review = ({ bookId }) => {
                 )
                 .then(function (response) {
                     console.log('글쓰기 POST 후처리 : ' + response);
+                    setWriteToggle(false);
+                })
+                .catch(err => {
+                    console.log(err);
                 });
-            setWriteToggle(false);
         } else {
             axios
                 .patch(
