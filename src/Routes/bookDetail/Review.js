@@ -46,7 +46,7 @@ const Review = ({ bookId }) => {
         } else {
             axios
                 .patch(
-                    'http://localhost:8080/api/reviews',
+                    'http://localhost:8080/api/reviews/1',
                     {
                         review_score: star,
                         review_content: text,
@@ -64,6 +64,7 @@ const Review = ({ bookId }) => {
     };
 
     const onChange = e => setText(e.target.value);
+    console.log(text);
 
     // 별 표시 함수
     const onStar5Click = () => {
