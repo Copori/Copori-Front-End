@@ -41,7 +41,7 @@
   color: rgb(165, 121, 0);
   font-weight: 700;
 }
-.profile__body--input-id:disabled::placeholder,
-.profile__body--input-email:disabled::placeholder {
-  color: rgb(150, 150, 150);
+.profile__body--input-id:disabled,
+.profile__body--input-email:disabled {
+  color: white;
 }

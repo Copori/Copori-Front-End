@@ -32,6 +32,11 @@ function Profile() {
   };
 
   const handleDelete = () => {
+    if (window.confirm("정말 탈퇴하시겠습니까?") === true) {
+    } else {
+      return;
+    }
+
     axios
 
       .patch(`http://localhost:8080/api/profile/delete/${userId}`, {
@@ -61,6 +66,15 @@ function Profile() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+
+        if (toggle === false) {
+          if (window.confirm("정말 수정하시겠습니까?") === false) {
+            setToggle(true);
+            return;
+          } else {
+            setToggle(false);
+          }
+        }
         axios
           .patch(
             `http://localhost:8080/api/profile/${userId}`,
@@ -125,15 +139,14 @@ function Profile() {
                   >
                     {toggle ? "수정하기" : "회원정보 수정"}
                   </button>
-                  <Link to="/">
-                    <button
-                      type="submit"
-                      className="profile__btn--delete"
-                      onClick={handleDelete}
-                    >
-                      회원탈퇴
-                    </button>
-                  </Link>
+
+                  <button
+                    type="button"
+                    className="profile__btn--delete"
+                    onClick={handleDelete}
+                  >
+                    회원탈퇴
+                  </button>
                 </div>
               </div>
             </div>
